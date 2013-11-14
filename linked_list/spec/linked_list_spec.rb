@@ -26,7 +26,27 @@ describe LinkedList do
     it 'decreases its counter when I remove elements'
   end
 
-  describe '#each'
+  describe '#each' do
+    it 'iterates over every item' do
+      list = LinkedList.new
+      items = []
+      list.each { |item| items << item }
+      items.should == []
+
+      list = LinkedList.new
+      list.add 'abc'
+      items = []
+      list.each { |item| items << item }
+      items.should == ['abc']
+
+      list = LinkedList.new
+      list.add 'abc'
+      list.add 'def'
+      items = []
+      list.each { |item| items << item }
+      items.should == ['abc', 'def']
+    end
+  end
 
   describe '#add' do
     it 'is included in the list'
